@@ -3,7 +3,7 @@
 # @author kenvinwei
 # @date 2014/09/04
 # python v3.4.1
-import os,string
+import os,string,shutil
 basedir="C:/Users/david/Desktop/hosts"
 hostpath="C:/Windows/System32/Drivers/etc/hosts"
 def readDir(dirs):
@@ -15,13 +15,8 @@ def warnString():
 		warnstr += "["+str(i+1)+"]:"+listfile[i]+"\n";
 	return warnstr;
 def writeHost(filepath):
-	 file1 = open(filepath,'r');
-	 content = file1.read()
-	 file2 = open(hostpath,"w")
-	 file2.write(content)
-	 file1.close()
-	 file2.close()
-	 print("write content:!\n"+content+"\n success!")
+	 shutil.copy(filepath, hostpath)
+	 print("copy\t"+filepath+"\tsuccess!")
 select_host = int(input("please select hosts file:\n"+warnString()))
 file_len = len(readDir(basedir))+1;
 if(select_host>0 and select_host<file_len):
