@@ -12,7 +12,9 @@ def warnString():
 	listfile = readDir(basedir)
 	warnstr=""
 	for i in range(0,len(listfile)):
-		warnstr += "["+str(i+1)+"]:"+listfile[i]+"\n";
+		ext = os.path.splitext(listfile[i])[1]
+		if(ext == ".hosts"):
+			warnstr += "["+str(i+1)+"]:"+listfile[i]+"\n";
 	return warnstr;
 def writeHost(filepath):
 	 shutil.copy(filepath, hostpath)
