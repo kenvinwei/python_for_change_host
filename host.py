@@ -17,11 +17,15 @@ def warnString():
 def writeHost(filepath):
 	 shutil.copy(filepath, hostpath)
 	 print("copy\t"+filepath+"\tsuccess!")
-select_host = int(input("please select hosts file:\n"+warnString()))
-file_len = len(readDir(basedir))+1;
-if(select_host>0 and select_host<file_len):
-	files = readDir(basedir);
-	filenames = basedir+"/"+files[int(select_host)-1]
-	writeHost(filenames)
-else:
-	print("error index to select!");
+def run():
+	select_host = int(input("please select hosts file:\n"+warnString()))
+	file_len = len(readDir(basedir))+1;
+	if(select_host>0 and select_host<file_len):
+		files = readDir(basedir);
+		filenames = basedir+"/"+files[int(select_host)-1]
+		writeHost(filenames)
+	else:
+		print("error index to select!");
+if(__name__=="__main__"):
+	run()
+
